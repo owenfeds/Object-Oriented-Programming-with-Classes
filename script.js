@@ -36,3 +36,34 @@ console.log(milk.toString());
 console.log(bread.toString());
 console.log(eggs.toString());
 
+class StoreProperties {
+    constructor() {
+        this.inventory = [];
+    }
+    addProduct(product) {
+        this.inventory.push(product);
+    }
+    getInventoryValue() {
+        let total = 0;
+        for (let product of this.inventory) {
+            total = total + product.getTotalValue();
+        }
+        return total;
+    }
+    findProductByName(name) {
+        for (let product of this.inventory) {
+           return product;
+        }
+         return null;
+    }
+
+}
+
+let store = new StoreProperties();
+
+store.addProduct(milk);
+
+let result = store.findProductByName("milk");
+
+console.log(result.toString());
+
