@@ -24,6 +24,8 @@ class ProductProperties {
  let milk = new ProductProperties("Milk", 3.10, 40);
  let bread = new ProductProperties("Bread", 2.00, 1);
  let eggs = new ProductProperties("Eggs", 1.00, 1);
+ let socks = new ProductProperties("Socks", 5.00, 2);
+ let shoes = new ProductProperties("Shoes", 30.00, 3);
 
     console.log(milk.getTotalValue());
 
@@ -41,6 +43,9 @@ class StoreProperties {
         this.inventory = [];
     }
     addProduct(product) {
+        this.inventory.push(product);
+    }
+    addPerishableProduct(product) {
         this.inventory.push(product);
     }
     getInventoryValue() {
@@ -61,9 +66,16 @@ class StoreProperties {
 
 let store = new StoreProperties();
 
-store.addProduct(milk);
+store.addProduct(socks);
+store.addProduct(shoes);
+store.addPerishableProduct(milk);
+store.addPerishableProduct(bread);
+store.addPerishableProduct(eggs);
 
-let result = store.findProductByName("milk");
+console.log(store.getInventoryValue());
 
-console.log(result.toString());
+ProductProperties.applyDiscount(store.inventory, 0.10);
 
+console.log(store.getInventoryValue());
+
+console.log(eggs.toString());
